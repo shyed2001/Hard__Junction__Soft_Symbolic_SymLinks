@@ -3,11 +3,11 @@ Title : How to Create Soft and Hard Symbolic Links in Windows.
 
 Author : Shyed Shahriar Housaini.
 
- 
+Date : 07/07/2021 
 
 --- 
 
-How to Create Soft and Hard Symbolic Links in Windows
+> # How to Create Soft and Hard Symbolic Links in Windows
 
 
 A symbolic link is a file-system object (file or directory) that points to another file system object (file or directory). The object being pointed to is called the target.
@@ -19,13 +19,14 @@ A soft link is referenced as a symbolic link and works similarly to a standard s
 A hard link makes it appear as though the file or folder actually exists at the location of the symbolic link, and your app won’t know any better. That can make hard symbolic links more useful in most situations. Hard links to a file will not have a shortcut arrow icon on them.
 
 
-See also:
-Symbolic Links - Windows applications | Microsoft Docs
-Hard Links and Junctions | Microsoft Docs
-NTFS symbolic link - Wikipedia
-Hard link - Wikipedia
-mklink | Microsoft Docs
-New-Item | Microsoft Docs
+> ## See also:
+
+* Symbolic Links - Windows applications | Microsoft Docs
+* Hard Links and Junctions | Microsoft Docs
+* NTFS symbolic link - Wikipedia
+* Hard link - Wikipedia
+* mklink | Microsoft Docs
+* New-Item | Microsoft Docs
 
 
 A symbolic link can be helpful if say you wanted to sync a folder for a program. For example, if you have a program that must have its files stored at C:\Program Files and you want them stored at D:\My Location instead. You could move the original directory from C:\Program Files to D:\My Location, and create a symbolic link (soft or hard) at C:\Program Files (link) pointing to D:\My Location (target).
@@ -37,20 +38,29 @@ If you have Developer Mode turned on in Windows 10, you will need to use the mkl
 
 
 
-Contents
+> # Contents
 
-Option One: Create Soft Symbolic Link Pointing to File in Command Prompt
-Option Two: Create Soft Symbolic Link Pointing to Directory in Command Prompt
-Option Three: Create Hard Link Pointing to File in Command Prompt
-Option Four: Create Hard Link (Junction) Pointing to Directory in Command Prompt
-Option Five: Create Soft Symbolic Link Pointing to File in PowerShell
-Option Six: Create Soft Symbolic Link Pointing to Directory in PowerShell
-Option Seven: Create Hard Link Pointing to File in PowerShell
-Option Eight: Create Hard Link (Junction) Pointing to Directory in PowerShell
-Option Nine: Delete Hard or Soft Symbolic Link
+>Option One: Create Soft Symbolic Link Pointing to File in Command Prompt
+
+> Option Two: Create Soft Symbolic Link Pointing to Directory in Command Prompt
+
+> Option Three: Create Hard Link Pointing to File in Command prompt
+
+> Option Four: Create Hard Link (Junction) Pointing to Directory in Command Prompt
+
+> Option Five: Create Soft Symbolic Link Pointing to File in PowerShell
+
+> Option Six: Create Soft Symbolic Link Pointing to Directory in PowerShell
+
+> Option Seven: Create Hard Link Pointing to File in PowerShell
+
+> Option Eight: Create Hard Link (Junction) Pointing to Directory in PowerShell
+
+> Option Nine: Delete Hard or Soft Symbolic Link 
+ 
 
 
-OPTION ONE
+> ## OPTION ONE
 Create Soft Symbolic Link Pointing to File in Command Prompt
 
 1 Open an elevated command prompt.
@@ -70,7 +80,7 @@ For example: mklink "C:\Users\Brink\Desktop\My Documents Link.txt" "C:\Users\Bri
 
 
 
-OPTION TWO
+> ## OPTION TWO
 Create Soft Symbolic Link Pointing to Directory in Command Prompt
 
 1 Open an elevated command prompt.
@@ -91,7 +101,7 @@ For example: mklink /d "C:\Program Files\Mozilla Firefox" "D:\Mozilla Firefox"
 
 
 
-OPTION THREE
+> ## OPTION THREE
 Create Hard Link Pointing to File in Command Prompt
 
 1 Open an elevated command prompt.
@@ -112,11 +122,7 @@ For example: mklink /h "C:\Users\Brink\Desktop\My Documents Link.txt" "C:\Users\
 Create Soft and Hard Symbolic Links in Windows-hard_link_to_file_command_prompt.jpg
 
 
-
-
-
-
-OPTION FOUR
+> ## OPTION FOUR
 Create Hard Link (Junction) Pointing to Directory in Command Prompt
 
 1 Open an elevated command prompt.
@@ -137,11 +143,7 @@ For example: mklink /j "C:\Program Files\Mozilla Firefox" "D:\Mozilla Firefox"
 Create Soft and Hard Symbolic Links in Windows-hard_link_to_directory_command_prompt.png
 
 
-
-
-
-
-OPTION FIVE
+> ## OPTION FIVE
 Create Soft Symbolic Link Pointing to File in PowerShell
 
 1 Open an elevated PowerShell.
@@ -162,11 +164,7 @@ For example: New-Item -ItemType SymbolicLink -Path "C:\Users\Brink\Desktop\My Do
 Create Soft and Hard Symbolic Links in Windows-soft_symbolic_link_to_file_powershell.jpg
 
 
-
-
-
-
-OPTION SIX
+> ## OPTION SIX
 Create Soft Symbolic Link Pointing to Directory in PowerShell
 
 1 Open an elevated PowerShell.
@@ -188,10 +186,7 @@ Create Soft and Hard Symbolic Links in Windows-soft_symbolic_link_to_directory_p
 
 
 
-
-
-
-OPTION SEVEN
+> ## OPTION SEVEN
 Create Hard Link Pointing to File in PowerShell
 
 1 Open an elevated PowerShell.
@@ -213,10 +208,7 @@ Create Soft and Hard Symbolic Links in Windows-hard_link_to_file_powershell.jpg
 
 
 
-
-
-
-OPTION EIGHT
+> ## OPTION EIGHT
 Create Hard Link (Junction) Pointing to Directory in PowerShell
 
 1 Open an elevated PowerShell.
@@ -238,10 +230,7 @@ Create Soft and Hard Symbolic Links in Windows-hard_link_to_directory_powershell
 
 
 
-
-
-
-OPTION NINE
+> ## OPTION NINE
 Delete Hard or Soft Symbolic Link
 
 1 Open File Explorer (Windows 8/10) or Windows Explorer (Windows 7).
