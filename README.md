@@ -73,8 +73,10 @@ Substitute Link in the command above with the full path with file name and exten
 
 Substitute Source Target in the command above with the full path of the file with extension that is the target (source) you want the soft symbolic link pointing to. This is the actual location where everything will be saved at.
 
-For example: mklink "C:\Users\Brink\Desktop\My Documents Link.txt" "C:\Users\Brink\Documents\My Document.txt"
-
+For example: 
+```shell
+> mklink "C:\Users\Brink\Desktop\My Documents Link.txt" "C:\Users\Brink\Documents\My Document.txt"
+```
 
 3 When finished, you can close the elevated command prompt if you like.
 
@@ -93,8 +95,10 @@ Substitute Link in the command above with the full path of a folder (directory) 
 
 Substitute Source Target in the command above with the full path of the folder (directory) that is the target (source) you want the soft symbolic link pointing to. This is the actual location where everything will be saved at.
 
-For example: mklink /d "C:\Program Files\Mozilla Firefox" "D:\Mozilla Firefox"
-
+For example:
+```shell
+>  mklink /d "C:\Program Files\Mozilla Firefox" "D:\Mozilla Firefox"
+```
 
 3 When finished, you can close the elevated command prompt if you like.
 
@@ -114,8 +118,10 @@ Substitute Link in the command above with the full path with file name and exten
 
 Substitute Source Target in the command above with the full path of the file with extension that is the target (source) you want the hard link pointing to. This is the actual location where everything will be saved at.
 
-For example: mklink /h "C:\Users\Brink\Desktop\My Documents Link.txt" "C:\Users\Brink\Documents\My Document.txt"
-
+For example:
+```shell
+>  mklink /h "C:\Users\Brink\Desktop\My Documents Link.txt" "C:\Users\Brink\Documents\My Document.txt"
+```
 
 3 When finished, you can close the elevated command prompt if you like.
 
@@ -135,8 +141,11 @@ Substitute Link in the command above with the full path of a folder (directory) 
 
 Substitute Source Target in the command above with the full path of the folder (directory) that is the target (source) you want the hard link pointing to. This is the actual location where everything will be saved at.
 
-For example: mklink /j "C:\Program Files\Mozilla Firefox" "D:\Mozilla Firefox"
+For example:
 
+```shell
+>  mklink /j "C:\Program Files\Mozilla Firefox" "D:\Mozilla Firefox"
+```
 
 3 When finished, you can close the elevated command prompt if you like.
 
@@ -156,8 +165,10 @@ Substitute Link in the command above with the full path with file name and exten
 
 Substitute Source Target in the command above with the full path of the file with extension that is the target (source) you want the soft symbolic link pointing to. This is the actual location where everything will be saved at.
 
-For example: New-Item -ItemType SymbolicLink -Path "C:\Users\Brink\Desktop\My Documents Link.txt" -Target "C:\Users\Brink\Documents\My Document.txt"
-
+For example: 
+```shell
+> New-Item -ItemType SymbolicLink -Path "C:\Users\Brink\Desktop\My Documents Link.txt" -Target "C:\Users\Brink\Documents\My Document.txt"
+```
 
 3 When finished, you can close the elevated PowerShell if you like.
 
@@ -177,8 +188,11 @@ Substitute Link in the command above with the full path of a folder (directory) 
 
 Substitute Source Target in the command above with the full path of the folder (directory) that is the target (source) you want the soft symbolic link pointing to. This is the actual location where everything will be saved at.
 
-For example: New-Item -ItemType SymbolicLink -Path "C:\Program Files\Mozilla Firefox" -Target "D:\Mozilla Firefox"
+For example:
 
+```shell
+>  New-Item -ItemType SymbolicLink -Path "C:\Program Files\Mozilla Firefox" -Target "D:\Mozilla Firefox"
+```
 
 3 When finished, you can close the elevated PowerShell if you like.
 
@@ -199,8 +213,11 @@ Substitute Link in the command above with the full path with file name and exten
 
 Substitute Source Target in the command above with the full path of the file with extension that is the target (source) you want the hard link pointing to. This is the actual location where everything will be saved at.
 
-For example: New-Item -ItemType HardLink -Path "C:\Users\Brink\Desktop\My Documents Link.txt" -Target "C:\Users\Brink\Documents\My Document.txt"
+For example:
 
+```shell
+>  New-Item -ItemType HardLink -Path "C:\Users\Brink\Desktop\My Documents Link.txt" -Target "C:\Users\Brink\Documents\My Document.txt"
+```
 
 3 When finished, you can close the elevated PowerShell if you like.
 
@@ -221,8 +238,11 @@ Substitute Link in the command above with the full path of a folder (directory) 
 
 Substitute Source Target in the command above with the full path of the folder (directory) that is the target (source) you want the hard link pointing to. This is the actual location where everything will be saved at.
 
-For example: New-Item -ItemType Junction -Path "C:\Program Files\Mozilla Firefox" -Target "D:\Mozilla Firefox"
+For example:
 
+```shell
+>  New-Item -ItemType Junction -Path "C:\Program Files\Mozilla Firefox" -Target "D:\Mozilla Firefox"
+```
 
 3 When finished, you can close the elevated PowerShell if you like.
 
