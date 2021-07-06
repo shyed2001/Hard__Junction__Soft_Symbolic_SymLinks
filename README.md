@@ -1,5 +1,5 @@
 --- 
-Title : How to Create Soft and Hard Symbolic Links in Windows.
+Title : How to Create Soft and Hard Symbolic Links in Windows and linux.
 
 Author : Shyed Shahriar Housaini.
 
@@ -258,4 +258,107 @@ Delete Hard or Soft Symbolic Link
 2 Navigate to the location of the symbolic link (soft or hard), and delete it. This will not delete the target (source) the symbolic link points to.
 
 Do not delete the target (source) the symbolic link points to. You only want to delete the link itself.
+
+
+> # How can I create Symbolic Links in Linux?.
+
+ In this tutorial, you’ll learn how to make multiple file names reference the same file using hard links and symbolic, also called “soft” links. The two common ways of creating multiple names that point to the same file in Linux are:
+
+Creating a soft link (symbolic link) to the file
+Creating a hard link to the file.
+
+
+## Working with Soft link (Symbolic link)
+A soft link is a special type of file that points to an existing file or directory. It can be used to link two files on different file systems. A soft link can point to a special file as well.
+
+The ln -s command is used to create a soft link. Let’s consider an example:
+
+In the following example, the ln -s command is used to create a new soft link for the existing file /tmp/file1.txt that will be named to /tmp/file2.txt:
+
+
+```shell
+> $ echo "Hello from file1" > /tmp/file1.txt
+> $ ln -s /tmp/file1.txt /tmp/file2.txt
+```
+
+Confirm by listing the files:
+
+```shell
+> $ ls -l /tmp/file1.txt /tmp/file2.txt
+-rw-------. 1 jkmutai jkmutai 17 Feb  4 22:37 /tmp/file1.txt
+lrwxrwxrwx. 1 jkmutai jkmutai 14 Feb  4 22:38 /tmp/file2.txt -> /tmp/file1.txt
+```
+
+You can see the first character of the long listing for /tmp/file2.txt is l instead of -. This indicates that the file is a soft link and not a regular file. (A d would indicate that the file is a directory.)
+
+
+Check the contents of the symbolic link file.
+
+```shell
+> $ cat /tmp/file2.txt
+Hello from file1
+```
+For directory, use:
+
+```shell
+> ln -s /dir /dir2
+```
+If you delete the original regular file, the soft link will still point to missing file – a “dangling soft link.”
+
+
+> # Working with Hard Links
+Every file in Linux starts with a single hard link. By creating a new hard link to a file, you are creating another name that points to that same data.
+
+The new hard link acts exactly like the original file name. It is hard to tell the difference between the new hard link and the original name of the file. You use the ln command to create a hard link – Another name that points to an existing file.
+
+```shell
+> $ echo "Hello World from Hard Link" >/tmp/hello1.txt
+> $ ln /tmp/hello1.txt  /tmp/hello2.txt
+
+``` 
+Where:
+
+/tmp/hello1.txt is a path to the existing file
+/tmp/hello2.txt is the hard link that you want to create.
+Use the ls -i option to ls list the files’ inode number. If the inode numbers are the same, the files are hard links pointing to the same data.
+
+```shell
+> $ ls -li /tmp/hello1.txt  /tmp/hello2.txt
+2591191 -rw-------.  2 jkmutai jkmutai 27 Feb  5 08:16 /tmp/hello1.txt
+2591191 -rw-------. 2 jkmutai jkmutai 27 Feb  5 08:16 /tmp/hello2.tx```t
+
+```
+
+--- Let's add third file and recheck ---
+
+
+```shell
+> $ ln /tmp/hello1.txt  /tmp/hello3.txt 
+> $ ls -li /tmp/hello1.txt  /tmp/hello2.txt /tmp/hello3.txt 
+2591191 -rw-------.  3 jkmutai jkmutai 27 Feb  5 08:16 /tmp/hello1.txt
+2591191 -rw-------. 3 jkmutai jkmutai 27 Feb  5 08:16 /tmp/hello2.txt
+2591191 -rw-------. 3 jkmutai jkmutai 27 Feb  5 08:16 /tmp/hello3.txt
+
+```
+
+All hard links referencing the same file have the same:
+
+link count
+access permissions
+user and group ownerships
+time stamps
+file content
+Compare with ones for Soft link:
+
+```shell
+> $ ls -li /tmp/file1.txt /tmp/file2.txt /tmp/file3.txt
+2442008 -rw-------. 1 jkmutai jkmutai 17 Feb  4 22:37 /tmp/file1.txt
+2442949 lrwxrwxrwx.  1 jkmutai jkmutai 14 Feb  4 22:38 /tmp/file2.txt -> /tmp/file1.txt
+2601927 lrwxrwxrwx. 1 jkmutai jkmutai 14 Feb  5 08:24 /tmp/file3.txt -> /tmp/file1.txt
+
+```
+
+> # Key difference between Soft link and Hard link
+ - A hard link points a name to data on a storage device
+ - A soft link points a name to another name, that points to data on a storage device.
 
