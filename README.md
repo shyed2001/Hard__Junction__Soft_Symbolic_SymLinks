@@ -1,5 +1,11 @@
 --- 
-Title : How to Create Soft and Hard Symbolic Links in Windows and linux.
+Title : Hard Links and Soft Symbolic Links .
+
+Lesson 1 : How to Create Hard Links and Soft Symbolic Links in Windows .
+
+Lesson 2 : How to Create Hard Links and Soft Symbolic Links in linux.
+
+Lesson 3 : 7 Key Differences Between Hard link and Soft link.
 
 Author : Shyed Shahriar Housaini.
 
@@ -259,6 +265,10 @@ Delete Hard or Soft Symbolic Link
 
 Do not delete the target (source) the symbolic link points to. You only want to delete the link itself.
 
+> # Main difference between Soft link and Hard link
+> - A hard link points a name to data on a storage device
+> - A soft link points a name to another name, that points to data on a storage device.
+
 
 > # How can I create Symbolic Links in Linux?.
 
@@ -358,7 +368,23 @@ Compare with ones for Soft link:
 
 ```
 
-> # Key difference between Soft link and Hard link
- - A hard link points a name to data on a storage device
- - A soft link points a name to another name, that points to data on a storage device.
+# 7 Key Differences Between Hard link and Soft link
 
+    1. A hard link is an additional name of the original file which refers inode to access the target file. In contrast, soft link is distinct to the original file and is an alias to original file but do not uses inode.
+    
+    2. When an original file gets deleted soft link becomes invalid whereas, a hard link is valid even if the target file is deleted.
+    
+    3. In Linux, the command used for the creation of hard link is “ln“. As against, the command used for a soft link is “ln -s“.
+    
+    4. Hard link has same inode number dissimilar to soft link, where target file and its soft link have distinct inode number.
+    
+    5. Hard links are restricted to its own partitions, but soft links can cover different file systems.
+    6. The performance of hard link is better than soft link in some cases.
+    
+    7. Relative path and absolute path both are allowed in soft links. On the contrary, the relative path is not allowed in a hard link.
+
+
+
+
+> # Conclusion
+A hard link doesn’t requires extra space and mat resolve faster, but the changes applied to a hard link reflect in the original file. On the other hand, Soft link needs extra space but any change in the soft link doesn’t impact the original file. Soft links are allowed to directories unlike to Hard link.
