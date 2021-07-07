@@ -387,5 +387,3 @@ Compare with ones for Soft link:
 
 
 
-> # Conclusion
-A hard link doesn’t requires extra space and mat resolve faster, but the changes applied to a hard link reflect in the original file. On the other hand, Soft link needs extra space but any change in the soft link doesn’t impact the original file. Soft links are allowed to directories unlike to Hard link.
