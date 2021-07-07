@@ -370,7 +370,8 @@ Compare with ones for Soft link:
 
 # 7 Key Differences Between Hard link and Soft link
 
-    1. A hard link is an additional name of the original file which refers inode to access the target file. In contrast, soft link is distinct to the original file and is an alias to original file but do not uses inode.
+    1. A hard link is an additional name of the original file which refers inode to access the target file. 
+       1.1 In contrast, soft link is distinct to the original file and is an alias to original file but do not uses inode.
     
     2. When an original file gets deleted soft link becomes invalid whereas, a hard link is valid even if the target file is deleted.
     
