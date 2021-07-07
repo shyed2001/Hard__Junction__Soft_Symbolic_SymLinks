@@ -1,17 +1,79 @@
 --- 
-Title : Hard Links and Soft Symbolic Links .
+Title : Hard Links, Junction link and Soft Symbolic Links .  
 
-Lesson 1 : How to Create Hard Links and Soft Symbolic Links in Windows .
+Lesson 1 : What are Hard Links, Junction link and Soft Symbolic Links ? 
 
-Lesson 2 : How to Create Hard Links and Soft Symbolic Links in linux.
+Lesson 2 : How to Create Hard Links, Junction link and Soft Symbolic Links in Windows . 
 
-Lesson 3 : 7 Key Differences Between Hard link and Soft link.
+Lesson 3 : How to Create Hard Links, Junction link and Soft Symbolic Links in linux.
+
+Lesson 4 : Key Differences Between Hard link, Junction link and Soft link.
 
 Author : Shyed Shahriar Housaini.
 
 Date : 07/07/2021 
 
 --- 
+
+Hard Link (or file hard link) – is a file that acts like a representation of another file on the same drive without actually duplicating that file.
+
+Junction Point (or directory hard link) is a type of hard link that acts like a representation of a directory, a partition or another volume.
+
+Symbolic Link (or soft link) is a file similar to a shortcut in that it points to a file name or directory name, but it’s handled at the system level rather than at the application level.
+
+Often confused with shortcuts as well as with each other, Hard links, Symbolic links and Junction Points are not the same; although like shortcuts, deleting either links or junction points usually won’t delete the target and vice versa (see exceptions below). Of the three, Symbolic Links are more similar to shortcuts than either Hard links or Junction Points, and they are generally more flexible, easier to use, and safer. When given a choice, most professionals recommend using Symbolic Links.
+
+Although Symbolic Linking has been around since 1978 and shortly thereafter standardized in UNIX and UNIX-like Operating Systems, it’s been present in Windows only since Vista. Symbolic Linking was introduced in Vista to replace Hard Links and Junction Points and to enhance compatibility with UNIX and UNIX-like systems. Hard Linking for files and support for directory hard links (Junction Points) have been present in Windows since Win2K – often using different implementations in each succeeding Windows version. Because the development of linking in Windows has been relatively recent and ongoing, a number of different linking methods have been included, supported, or made available as third-party add-ons depending on the Windows version. Currently, Hard Links, Junction Points and Symbolic Links in Windows are only supported for the NTFS file system.
+
+Note that Windows does not support Hard Links or Junction Points to directories on remote shares; however, Symbolic Links can point to remote files and directories on SMB network paths.
+
+The differences between Hard Links, Junction Points, Symbolic Links, and Shortcuts are further contrasted below:
+
+Hard Link (Links individual files):
+
+A file that acts like a representation of a target file on the same drive
+Has the same size as the target without duplicating it (doesn’t use any space)
+Interpreted at the operating system level (SW apps act upon the target through the link)
+Deleting the Hard Link does not remove the target file
+If the target is deleted, its content is still available through the hard link
+Changing the contents through the Hard Link changes the target contents*
+Must reside on the same partition as the target file
+Compatible with Win2k and above in Windows
+* Some text editors save changed text to a new file and delete the original file, which can break the link. This behavior can be changed in some editors by forcing a save over the original file instead. See discussion at Jameser’s Tech Tips here for more information.
+
+Junction Point (Directory Hard Link):
+
+A file that acts like a representation of a target directory, partition or volume on the same system
+Has the same size as the target without duplicating it (doesn’t use any space)
+Interpreted at the operating system level (SW apps act upon the target through the link)
+Deleting the Junction Point does not remove the target*
+If the target is moved, renamed or deleted, the Junction Point still exists, but points to a non-existing directory
+Changing the contents through the Junction Point changes the target contents
+Can reside on partitions or volumes separate from the target on the same system
+Compatible with Win2k and above in Windows
+*A Junction Point should never be removed in Win2k, Win2003 and WinXP with Explorer, the del or del /s commands, or with any utility that recursively walks directories since these will delete the target directory and all its sub-directories. Instead, use the rmdir command, the linkd utility, or fsutil (if using WinXP or above) or a third party tool to remove the junction point without affecting the target. In Vista/Win7, it’s safe to delete Junction Points with Explorer or with the rmdir and del commands.
+
+Symbolic Link (Soft Link):
+
+A file containing text interpreted by the operating system as a path to a file or directory
+Has a file size of zero
+Interpreted at the operating system level (SW apps act upon the target through the link)
+Deleting the Symbolic Link does not remove the target
+If the target is moved, renamed or deleted, the link still exists, but points to a non-existing file or directory
+Points to, rather than represents, the target using relative paths
+Can reside on partitions or volumes separate from the target or on remote SMB network paths
+Compatible with UNIX and UNIX-like systems and with Vista and above in Windows
+Shortcut:
+
+A file interpreted by the Windows shell or other apps that understand them as paths to a file or directory
+File size corresponds to the binary information it contains
+Treated as ordinary files by the operating system and by SW programs that don’t understand them
+Deleting the shortcut does not remove the target
+Maintains references to target even if the target is moved or renamed, but is useless if the target is deleted
+Points to, rather than represents, the target
+Can reside on partitions or volumes separate from the target on the same System
+Compatible with all Windows versions
+
 
 > # How to Create Soft and Hard Symbolic Links in Windows
 
@@ -264,6 +326,33 @@ Delete Hard or Soft Symbolic Link
 2 Navigate to the location of the symbolic link (soft or hard), and delete it. This will not delete the target (source) the symbolic link points to.
 
 Do not delete the target (source) the symbolic link points to. You only want to delete the link itself.
+
+
+  mklink – a command line tool included with Vista and Server 2008 and above. The most current link creation tool included with Windows. It creates Hard Links, Symbolic Links and Junction Points.
+  
+  usage: mklink [[/d] | [/h] | [/j]] <NameofLink> <Target>
+
+  /d – Creates a Symbolic Link for a directory.
+
+
+   If no flag used, creates a Symbolic Link for a file (default)
+
+   /h – Creates a Hard Link
+
+   /j – Creates a Junction Point
+
+   <NameofLink> – The name for the Symbolic Link being created
+
+   <Target> – The relative or absolute path of the target
+
+   /? – Help
+
+> To create a file hard link: mklink /H linkName target
+
+> To create a directory junction: mklink /J linkName target
+> To create a directory symbolic link: mklink /D linkName target
+
+> To create a file symbolic link: mklink linkName target
 
 > # Main difference between Soft link and Hard link
 > - A hard link points a name to data on a storage device
