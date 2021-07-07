@@ -475,4 +475,8 @@ Compare with ones for Soft link:
 
 
 
+    
+[NTFS-Hard-Links-Junctions-and-Symbolic-Links.pdf](./NTFS-Hard-Links-Junctions-and-Symbolic-Links.pdf)
+    
+    
 
